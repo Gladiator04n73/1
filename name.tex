@@ -1,0 +1,157 @@
+%https://ru.overleaf.com/learn
+
+% Логика документа
+
+% Выбираем класс документа и классовые опции 
+% Класс определяет вид и структуру документа. 
+% Класс -- это база, которую можно править с помощью подключаемых стилевых файлов. 
+% В классе задаётся геометрия страницы и определены команды секционирования. 
+
+% Имеются следующие базовые классы:
+% article (статья), 
+% book (книга), 
+% report (отчёт), 
+% proc (доклад), 
+% letter (письмо) и 
+% slides (слайды)!.
+
+% Стандартные стилевые опции:
+% 10pt|11pt|12pt — установка базового размера шрифта. 
+% a4paper — установка размера листа бумаги. Следует использовать всегда, так как по умолчанию LATEX использует размер листа letter.
+% draft — режим черновой печати для «отлавливания» проблем вёрстки. 
+% oneside|twoside — форматирование документа для односторонней и двухсторонней печати, соответственно.
+% twocolumn — печать в две колонки.
+
+% Модификации классов:
+% extarticle, extbook, extletter, extproc, extreport (8pt, 9pt, 14pt, 17pt и 20pt)
+
+\documentclass[a4paper, 12pt]{article} 
+% Пакеты подключаются командой 
+% \usepackage[необязательные параметры]{имя пакета}
+
+% Выбор кодировки файла
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath, amssymb}
+
+%Выбор кодировки ширифтов
+%для тестов только на русском языке этот параметр можно не указывать
+\usepackage[T2A]{fontenc} 
+% Подключение языков документа
+% Последний язык доминирующий
+\usepackage[english, russian]{babel}  
+
+%Задаем параметры документа
+\usepackage[top = 20 mm, 
+            bottom = 20 mm, 
+            left = 30 mm, 
+            right = 30 mm]{geometry}
+            
+%Красная строка в первом абзаце
+\usepackage{indentfirst}
+
+%Величина отступа красной строки
+\setlength{\parindent}{12.5 mm}
+
+%Межстрочный интервал
+%\def\baselinestretch{1.5}
+\usepackage{setspace}
+\setstretch{1}
+
+\setcounter{equation}{61}
+ 
+\begin{document}
+Слагаемое $\alpha u_t$ в правой части уравнения соответствует трению, пропорциональному скорости. 
+
+Рассмотрим сначала задачу о распространении периодического граничного режима:
+
+\begin{equation} \label{f62}
+u(l,\,t)= A\,\cos\, \omega t\, (\, \text{или}\, u(l,\,t)    = B\,\cos\, \omega t\,), 
+\end{equation}
+\begin{equation} \label{f63}
+(0,\,t)= 0.    \setcounter{equation}{63} 
+\end{equation}
+
+Для дальнейшего нам удобнее записать граничное условие в комплексной форме
+
+\begin{equation} \label{f64}(l,\,t)= Ae^{i\omega t}.
+\end{equation}
+
+Если \begin{displaymath} (x,\,t)= u^{(1)}(x,\,t)+iu^{(2)}(x,\,t).
+\end{displaymath}
+удовлетворяет уравнению  (61) с граничными условиями \eqref{f63} и \eqref{f64}, то \, \(u^{(1)} (x,\,t)\)\, \text{и}  \(u^{(2)} (x,\,t)\)\,  - его действительная и мнимая части удовлетворяют тому же уравнению (в силу его линейности), условию \eqref{f63} и граничными условиями при х = l
+
+\begin{displaymath} u^{(1)}\,(l,\,t) =A\,\cos\, \omega t\,,\end{displaymath}
+\begin{displaymath}
+u^{(2)}\,(l,\,t) =A\,\sin\, \omega t\,.
+\end{displaymath}
+Итак, найдем решение задачи
+
+\begin{equation}
+\left.
+\begin{array}{ll}
+ u_{tt} &= \alpha^2u_{xx}-\alpha^u_{t},\\
+ u(0,\,t) &=0,\\
+ u(l,\,t) &= Ae^{i\omega t}.
+\end{array}
+\right\}
+\end{equation}
+Полагая
+\begin{displaymath} u(x,\,t)= X\,(x)\, e^{i\omega t}\,\end{displaymath}
+ подставляя это выражение в уравнение, получим для функции X (x) следующую задачу:
+ \begin{equation} \label{f66}X''+k^{2}X=0.\,\,\,(k^{2}=\left(\frac{\omega^2}{\alpha^3}-ia\frac{\omega}{\alpha^3}\right),
+\end{equation}
+ \begin{equation} \label{f67}X\,(0)=0,
+\end{equation}
+ \begin{equation} \label{f68}X\,(l)=A.
+\end{equation}
+Из уравнения \eqref{f66} и граничного условия \eqref{f67} находим:
+ \begin{displaymath} X\,(x)=C\,\sin\,kx.
+\end{displaymath}
+Условие при x=l дает: \begin{equation} \label{f69}C=\frac{A}{\sin\,kl},
+\end{equation}
+так что\begin{equation} \label{f70} X\,(x)=A\frac{\sin\,kx}{\sin\,kl}=X_{1}(x)+iX_{2}(x),
+\end{equation}
+где \(X_{1}(x)\) \, и  \(X_{2}(x)\) \,  - действительная и мнимая части X (x).
+
+Искомое решение можно представить в виде  \begin{displaymath}
+u(x,\,t)=[X_{1}(x)\,+\,iX_{2}(x)]e^{i\omega t}=u^{(1)}(x,\,t)+iu^{(2)}(x,\,t),
+\end{displaymath}
+где \begin{displaymath}
+u^{(1)}(x,\,t)=X_{1}(x)\cos\omega t\,-\,X_{2}(x)\sin\omega t]+iu^{(2)}(x,\,t).,
+\end{displaymath}
+\begin{displaymath}
+u^{(2)}(x,\,t)=X_{1}(x)\sin\omega t\,+\,X_{2}(x)\cos\omega t]+iu^{(2)}(x,\,t).
+\end{displaymath}
+Переходя у пределу при а \( а \to 0\) \,, \text{найдем, что}
+
+\begin{equation} \label{f70} \bar{k}\,= \lim\limits_{a \to 0} k =\frac{\omega}{\alpha}
+\end{equation}
+и, соответственно,\begin{equation} \label{f70} \bar{u}^{(1)}\,(x,\,t)= \lim\limits_{a \to 0} u^{(1)}\,(x,\,t) =A\frac{\sin\frac{\omega}{\alpha}x} {\sin\frac{\omega}{\alpha}l}\cos\omega t,
+\end{equation}\begin{equation} \label{f70} \bar{u}^{(2)}\,(x,\,t)= \lim\limits_{a \to 0} u^{(2)}\,(x,\,t) =A\frac{\sin\frac{\omega}{\alpha}x} {\sin\frac{\omega}{\alpha}}\sin\omega t.
+\end{equation}
+Рассмотрим следующую задачу:\begin{equation*}
+\left.
+\begin{array}{ll}
+   \,\,\,\,\,\,\,\,\,\,u_{tt} =\alpha^2u_{xx},\,\,\,\,0<x<l,\,\,\,\,  t>-\infty; \\
+   u(0,\,t)=\mu_{1}\,(t),\,\,\,t>-\infty; \\
+   u(l,\,t)=\mu_{2}\,(l),
+ \end{array}\right\}\tag{\(I_{0}\)}
+\end{equation*}
+которую будем называть задачей \((I_{0})\). Очевидно, что \(\bar{u}^{(1)} (x,\,t)\)\, \text{и}  \(\bar{u}^{(2)} (x,\,t)\)\, являются решениями задачи \((I_{0})\) при граничных условиях\begin{gather*}
+    \bar{u}^{(1)}(0,\,t)=0,\quad \bar{u}^{(1)}(l,\,t)=A\,\cos\, \omega t\,, \\
+    \bar{u}^{(2)}(0,\,t)=0,\quad \bar{u}^{(2)}(l,\,t)=A\,\sin\, \omega t\,.
+\end{gather*}
+
+
+
+Решение задачи при \(\alpha\) = 0 существует не всегда. Если частота вынужденных колебаний \(\omega\) совпадает с собственной частотой \(\omega_{n}\) колебаний струныс закрепленными концами\begin{gather*}
+    \omega=\omega_{n}=\frac{\pi n}{l}a,
+\end{gather*}
+то знаменатель в формулах для \(\bar{u}^{(1)}\) и \(\bar{u}^{(2)}\)  обращается в нуль и решения задачи без начальных условий не существует.
+
+Этот факт имеет простой физический смысл: при \( \omega=\omega_{n}\) наступает резонанс, т.е. не существует установившегося режима. Амплитуда, начиная с некоторого момента \( t=t_{0}\) неограниченно нарастает.
+
+При наличии трения \( (a\neq0)\) установившийся режим возможен при любом \(\omega\) , так как \(\sin\,kl\neq0\) при комплексном \( k\),
+\end{document}
+
